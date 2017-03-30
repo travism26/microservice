@@ -41,6 +41,17 @@
   (http/json-response mock-project-collection)
   )
 
+(defn get-project
+  [request]
+  (prn request)
+  ;WTF is going on throwing an NPE??! fix this tmw
+  (let [projname (get-in request [:path-parms :project-name])]
+    (prn "this is a sep")
+    (prn projname)
+    (http/json-response ((keyword projname) mock-project-collection))
+    )
+  )
+
 ;; Defines "/" and "/about" routes with their associated :get handlers.
 ;; The interceptors defined after the verb map (e.g., {:get home-page}
 ;; apply to / and its children (/about).
@@ -50,6 +61,7 @@
 (def routes #{["/" :get (conj common-interceptors `home-page)]
               ["/about" :get (conj common-interceptors `about-page)]
               ["/projects" :get (conj common-interceptors `get-projects)]
+              ["/projects/:project-name" :get (conj common-interceptors `get-project)]
               })
 
 ;; Map-based routes
