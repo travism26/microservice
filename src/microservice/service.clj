@@ -52,6 +52,8 @@
     )
   )
 
+; need to fix this to post to a DB
+; need to add a db.
 (defn add-project
   [request]
   (prn (:json-params request))
@@ -68,7 +70,7 @@
               ["/about" :get (conj common-interceptors `about-page)]
               ["/projects" :get (conj common-interceptors `get-projects)]
               ["/projects" :post (conj common-interceptors `add-project)]
-              ["/projects/:project-name" :get (conj common-interceptors `get-project)]   
+              ["/projects/:project-name" :get (conj common-interceptors `get-project)]
               })
 
 ;; Map-based routes
