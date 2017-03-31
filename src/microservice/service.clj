@@ -45,11 +45,17 @@
   [request]
   (prn request)
   ;WTF is going on throwing an NPE??! fix this tmw
-  (let [projname (get-in request [:path-parms :project-name])]
+  (let [projname (get-in request [:path-params :project-name])]
     (prn "this is a sep")
     (prn projname)
     (http/json-response ((keyword projname) mock-project-collection))
     )
+  )
+
+(defn add-project
+  [request]
+  (prn (:json-params request))
+  (ring-resp/created "http://fake-201-url" "fake 201 in the body")
   )
 
 ;; Defines "/" and "/about" routes with their associated :get handlers.
@@ -61,7 +67,8 @@
 (def routes #{["/" :get (conj common-interceptors `home-page)]
               ["/about" :get (conj common-interceptors `about-page)]
               ["/projects" :get (conj common-interceptors `get-projects)]
-              ["/projects/:project-name" :get (conj common-interceptors `get-project)]
+              ["/projects" :post (conj common-interceptors `add-project)]
+              ["/projects/:project-name" :get (conj common-interceptors `get-project)]   
               })
 
 ;; Map-based routes
