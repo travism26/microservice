@@ -11,11 +11,18 @@
                  [io.pedestal/pedestal.jetty "0.5.2"]
                  ;; [io.pedestal/pedestal.immutant "0.5.2"]
                  ;; [io.pedestal/pedestal.tomcat "0.5.2"]
-
+                 
                  [ch.qos.logback/logback-classic "1.1.8" :exclusions [org.slf4j/slf4j-api]]
                  [org.slf4j/jul-to-slf4j "1.7.22"]
                  [org.slf4j/jcl-over-slf4j "1.7.22"]
-                 [org.slf4j/log4j-over-slf4j "1.7.22"]]
+                 [org.slf4j/log4j-over-slf4j "1.7.22"]
+
+                 ; This will be the DB STUFF
+                 [c3p0/c3p0 "0.9.1.2"]
+                 [org.clojure/java.jdbc "0.5.0"]
+                 ; might need newer version 
+                 [org.postgresql/postgresql "9.4.1208.jre7"]
+                 ]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
   ;; If you use HTTP/2 or ALPN, use the java-agent to pull in the correct alpn-boot dependency
