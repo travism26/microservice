@@ -9,6 +9,8 @@
                   "postgresql://localhost:5432/DBNAME")))
 
 ;; this is my config for the DB connections need to create a env file to load my user/pass and inc to .gitignore. :)
+; going to eventually take this hard coded info out and create seperate clj files 
+; to easily swap out DBs instead of this ugly way :/
 (def db-config
   {
    :classname "org.postgresql.Driver"
@@ -33,3 +35,10 @@
                (.setMinPoolSize 1)
                (.setInitialPoolSize 1))]
     {:datasource cpds}))
+
+;some db stuff
+(def pooled-db (delay (pool db-config)))
+
+(defn db-connection [] @pooled-db)
+
+
