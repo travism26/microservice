@@ -1,7 +1,6 @@
 (ns microservice.db
   (:import com.mchange.v2.c3p0.ComboPooledDataSource)
-  (:require [jdbc.pool.c3p0 :as pool]
-            [clojure.java.jdbc :as sql]
+  (:require [clojure.java.jdbc :as sql]
             [microservice.config :as settings]))
 
 (def db-uri
@@ -29,21 +28,4 @@
 
 
 ;; my connection pool (not sure if im doing this the optimal way but oh well, just Testing er out)
-(defn pool 
-  [config]
-  (let [cpds (doto (ComboPooledDataSource.)
-               (.setDriverClass (:classname config))
-               (.setJdbcUrl (str "jdbc:" (:subprotocol config) ":" (:subname config)))
-               (.setUser (:user config))
-               (.setPassword (:password config))
-               (.setMaxPoolSize 1)
-               (.setMinPoolSize 1)
-               (.setInitialPoolSize 1))]
-    {:datasource cpds}))
-
-;some db stuff
-(def pooled-db (delay (pool db-config)))
-
-(defn db-connection [] @pooled-db)
-
 
