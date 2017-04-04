@@ -1,7 +1,8 @@
 (ns microservice.db
   (:import com.mchange.v2.c3p0.ComboPooledDataSource)
-  (:require [jdbc.pool.c3p0]
-            [clojure.java.jdbc]))
+  (:require [jdbc.pool.c3p0 :as pool]
+            [clojure.java.jdbc :as sql]
+            [microservice.config :as settings]))
 
 (def db-uri
   (java.net.URI. (or 
@@ -17,10 +18,14 @@
    ;:classname "org.h2.Driver"
    :subprotocol "postgresql"
    ;:subprotocol "h2"
-   :subname "//localhost/DBNAMEHERE"
+   :subname ""
    ;:subname "mem:document" -> in memory database;
-   :user "postgres_username_here"
+   :user "postgres"
    :password ""})
+
+(defn tests
+  []
+  settings/env)
 
 
 ;; my connection pool (not sure if im doing this the optimal way but oh well, just Testing er out)

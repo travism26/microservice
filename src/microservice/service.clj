@@ -3,7 +3,8 @@
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
                                         ;[io.pedestal.http :as bootstrap]
-            [ring.util.response :as ring-resp]))
+            [ring.util.response :as ring-resp]
+            [microservice.db :as db]))
 
 (def mock-project-collection
   {
@@ -37,7 +38,6 @@
 
 (defn get-projects
   [request]
-  (prn request)
   (http/json-response mock-project-collection)
   )
 

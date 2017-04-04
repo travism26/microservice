@@ -1,5 +1,6 @@
 # Project related
-*config.clj
+*config/*
+config.clj
 
 # Java related
 pom.xml

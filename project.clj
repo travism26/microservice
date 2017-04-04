@@ -11,15 +11,16 @@
                  [io.pedestal/pedestal.jetty "0.5.2"]
                  ;; [io.pedestal/pedestal.immutant "0.5.2"]
                  ;; [io.pedestal/pedestal.tomcat "0.5.2"]
-                 
+                 [yogthos/config "0.8"]
                  [ch.qos.logback/logback-classic "1.1.8" :exclusions [org.slf4j/slf4j-api]]
                  [org.slf4j/jul-to-slf4j "1.7.22"]
                  [org.slf4j/jcl-over-slf4j "1.7.22"]
                  [org.slf4j/log4j-over-slf4j "1.7.22"]
-
+                 
                  ; This will be the DB STUFF
                  [c3p0/c3p0 "0.9.1.2"]
                  [org.clojure/java.jdbc "0.5.0"]
+                 [clojure.jdbc/clojure.jdbc-c3p0 "0.3.1"]
                  ; might need newer version 
                  [org.postgresql/postgresql "9.4.1208.jre7"]
                  ]
@@ -29,6 +30,9 @@
   ;:java-agents [[org.mortbay.jetty.alpn/jetty-alpn-agent "2.0.5"]]
   :profiles {:dev {:aliases {"run-dev" ["trampoline" "run" "-m" "microservice.server/run-dev"]}
                    :dependencies [[io.pedestal/pedestal.service-tools "0.5.2"]]}
-             :uberjar {:aot [microservice.server]}}
+             :uberjar {:aot [microservice.server]}          
+             :resource-paths ["config/dev"]
+             }
+  :prod {:resource-paths ["config/prod"]}
   :main ^{:skip-aot true} microservice.server)
 
