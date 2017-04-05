@@ -1,6 +1,7 @@
 # Project related
 *config/*
 config.clj
+.gorilla-port
 
 # Java related
 pom.xml

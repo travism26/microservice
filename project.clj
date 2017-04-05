@@ -16,7 +16,7 @@
                  [org.slf4j/jul-to-slf4j "1.7.22"]
                  [org.slf4j/jcl-over-slf4j "1.7.22"]
                  [org.slf4j/log4j-over-slf4j "1.7.22"]
-                 [org.clojure/java.jdbc "0.7.0-alpha3"k]
+                 [org.clojure/java.jdbc "0.7.0-alpha3"]
                  [clojure.jdbc/clojure.jdbc-c3p0 "0.3.1"]
                  [org.postgresql/postgresql "9.4.1212"]
                  ]
