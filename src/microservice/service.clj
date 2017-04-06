@@ -34,7 +34,7 @@
   [request]
   ;; this just prints the request map.
   (prn request)
-  (ring-resp/response "Hello World!"))
+  (ring-resp/response (db/test)))
 
 (defn get-projects
   [request]
