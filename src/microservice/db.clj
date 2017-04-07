@@ -1,7 +1,5 @@
 (ns microservice.db
-  (:import com.mchange.v2.c3p0.ComboPooledDataSource)
-  (:require [clojure.java.jdbc :as j]
-            [microservice.config :as settings]))
+  (:require [clojure.java.jdbc :as j]))
 
 
 ;; Lets try this again....
@@ -16,3 +14,15 @@
 
 (defn test [] 
   (j/query db ["select * from usernames"]))
+
+(defn id-for-username
+  [input]
+  (j/query db ["SELECT user_id from usernames where username =?" input] {:row-fn :user_id :result-set-fn first}))
+
+(defn delete-user
+  [username]
+  (let [user-id (id-for-username username)
+        (j/delete! db :usernames ["user_id = ?" user-id])]))
+
+
+
