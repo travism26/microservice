@@ -21,8 +21,25 @@
 
 (defn delete-user
   [username]
-  (let [user-id (id-for-username username)
-        (j/delete! db :usernames ["user_id = ?" user-id])]))
+  (let [user-id (id-for-username username)]
+    (j/delete! db :usernames ["user_id = ?" user-id])))
 
+(defn add-user
+  [userdata]
+  ; pretend to do input validation here, also sanditize the input (dont know how to
+  ; do this yet.
+  ; this is my input stream
+  ; (jdbc/insert! db :usernames {:username "travism" :first_name "travis" :last_name "martin"})
+  (j/insert! db :usernames {userdata})
+  )
+
+; TESTING VECs see how to handle input
+(def {:username "john" 
+      :first_name "john" 
+      :last_name "doe"})
+
+;Testing my eval buffer c-c c-k
+(defn hello []
+  (println "hello"))
 
 
