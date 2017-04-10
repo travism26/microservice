@@ -42,4 +42,17 @@
 (defn hello []
   (println "hello"))
 
+(def load-userdata [
+                    ["travismartin" "travis" "martin"]
+                    ["jonny123" "john" "doe"]
+                    ["user1" "test" "lastname"]
+                    ["johnson" "jo" "madden"]
+                    ["hello_user" "mt" "user"]])
+
+
+(defn load-user-data
+  [user]
+  (j/insert-multi! db :usernames (map #(hash-map :username (first %1)
+                                                 :first_name (second %1)) user)))
+
 
