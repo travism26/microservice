@@ -30,11 +30,11 @@
   ; do this yet.
   ; this is my input stream
   ; (jdbc/insert! db :usernames {:username "travism" :first_name "travis" :last_name "martin"})
-  (j/insert! db :usernames {userdata})
+  (j/insert! db :usernames [userdata])
   )
 
 ; TESTING VECs see how to handle input
-(def {:username "john" 
+(def user{:username "john" 
       :first_name "john" 
       :last_name "doe"})
 
@@ -43,11 +43,11 @@
   (println "hello"))
 
 (def load-userdata [
-                    ["travismartin" "travis" "martin"]
-                    ["jonny123" "john" "doe"]
-                    ["user1" "test" "lastname"]
-                    ["johnson" "jo" "madden"]
-                    ["hello_user" "mt" "user"]])
+                    ["travismartin" "travis"]
+                    ["jonny123" "john"]
+                    ["user1" "test"]
+                    ["johnson" "jo"]
+                    ["hello_user" "mt"]])
 
 
 (defn load-user-data
