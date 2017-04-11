@@ -49,6 +49,9 @@
                     ["johnson" "jo"]
                     ["hello_user" "mt"]])
 
+(def ud [[:un "epic" :fn "trav" :ln "martin"]
+         [:un "eh" :fn "a" :ln "h"]])
+
 
 (defn load-user-data
   [user]
@@ -56,3 +59,12 @@
                                                  :first_name (second %1)) user)))
 
 
+(def t {:username "vec" :last_name "lastername" :first_name "ehhe"})
+
+;
+(defn load-ud
+  [user] 
+  (j/insert! db :usernames user))
+
+(defn get-user [firstname]
+  (j/query db ["select * from usernames where first_name like ? " firstname]))
