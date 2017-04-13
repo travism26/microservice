@@ -59,7 +59,24 @@
                                                  :first_name (second %1)) user)))
 
 
+
 (def t {:username "vec" :last_name "lastername" :first_name "ehhe"})
+
+(def gg [["first" "secod" "third"]
+         ["hi" "trav" "ironman"]])
+(defn ll
+  [user]
+  j/insert-multi! db :usernames (map #(hash-map :username (first  %1)
+                                                :first_name (second %1)
+                                                :last_name (last %1)) user))
+
+;different approach 
+(defn ll-new
+  [user]
+  j/insert-multi! db :usernames (map #(hash-map :username (nth %1 0)
+                                                :first_name (nth %1 1)
+                                                :last_name (nth %1 2)) user))
+
 
 ;
 (defn load-ud
@@ -68,3 +85,11 @@
 
 (defn get-user [firstname]
   (j/query db ["select * from usernames where first_name like ? " firstname]))
+
+
+
+(defn username-id-remapper
+  [m]
+  (hash-map (keyword (:username m)) (:user_id m)))
+
+
