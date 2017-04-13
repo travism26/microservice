@@ -19,7 +19,7 @@
                  [org.clojure/java.jdbc "0.7.0-alpha3"]
                  [clojure.jdbc/clojure.jdbc-c3p0 "0.3.1"]
                  [org.postgresql/postgresql "9.4.1212"]
-                 ]
+                 [cheshire "5.7.0"]]
   :plugins [[lein-gorilla "0.4.0"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]

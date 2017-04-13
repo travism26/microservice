@@ -4,7 +4,9 @@
             [io.pedestal.http.body-params :as body-params]
                                         ;[io.pedestal.http :as bootstrap]
             [ring.util.response :as ring-resp]
-            [microservice.db :as db]))
+            [microservice.db :as db]
+            [cheshire.core :as core]
+            [cheshire.factory :as factory]))
 
 (def mock-project-collection
   {
