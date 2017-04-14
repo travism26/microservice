@@ -6,7 +6,8 @@
             [ring.util.response :as ring-resp]
             [microservice.db :as db]
             [cheshire.core :as core]
-            [cheshire.factory :as factory]))
+            [cheshire.factory :as factory]
+            [microservice.parse_json :as parser]))
 
 (def mock-project-collection
   {
@@ -36,7 +37,7 @@
   [request]
   ;; this just prints the request map.
   (prn request)
-  (ring-resp/response (db/test)))
+  (ring-resp/response (parser/to-json-string (db/test)) ))
 
 (defn get-projects
   [request]

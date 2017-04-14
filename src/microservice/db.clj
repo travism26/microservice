@@ -78,7 +78,6 @@
                                                 :last_name (nth %1 2)) user))
 
 
-;
 (defn load-ud
   [user] 
   (j/insert! db :usernames user))
