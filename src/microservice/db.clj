@@ -12,7 +12,7 @@
          :user "postgres"
          :password ""})
 
-(defn test [] 
+(defn test []
   (j/query db ["select * from usernames"]))
 
 (defn id-for-username
@@ -84,8 +84,6 @@
 
 (defn get-user [firstname]
   (j/query db ["select * from usernames where first_name like ? " firstname]))
-
-
 
 (defn username-id-remapper
   [m]
